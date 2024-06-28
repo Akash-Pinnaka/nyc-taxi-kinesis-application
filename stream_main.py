@@ -27,14 +27,15 @@ def stream_data_simulator(input_s3_bucket, input_s3_key):
     s3_response = parquet_obj.get()
     parquet_data = s3_response['Body'].read()
 
-    print("Parquet data: ", parquet_data[:50])
+    # print("Parquet data: ", parquet_data[:50])
 
     # Convert the Parquet data to a Pandas DataFrame
+
     table = pq.read_table(BytesIO(parquet_data))
-    print("Table: ", table)
+    # print("Table: ", table)
     df = table.to_pandas()
 
-    print("Dataframe: ", df.head(5))
+    # print("Dataframe: ", df.head(5))
 
     for index, row in df.iloc[:100].iterrows():
 
@@ -53,7 +54,7 @@ def stream_data_simulator(input_s3_bucket, input_s3_key):
             line_json = json.dumps(row_dict)
             json_load = json.loads(line_json)
 
-            print("Json load: ", json_load)
+            # print("Json load: ", json_load)
 
             # # Simple date casting:
             # tpep_pickup_datetime_raw = parser.parse(json_load['tpep_pickup_datetime'])
