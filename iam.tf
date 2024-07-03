@@ -1,4 +1,4 @@
-# Iam role for the Kinesis Analytics application
+# Iam role and policies for the Kinesis Analytics application
 
 resource "aws_iam_role" "nyc-kinesis-analytics-role" {
   name = "nyc-kinesis-analytics-role"
@@ -86,8 +86,10 @@ resource "aws_iam_role_policy_attachment" "b" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
 }
 
-resource "aws_iam_role_policy_attachment" "c" {
-  role       = aws_iam_role.nyc-kinesis-analytics-role.name
-  policy_arn = "arn:aws:iam::aws:policy/CloudWatchFullAccessV2"
+# resource "aws_iam_role_policy_attachment" "c" {
+#   role       = aws_iam_role.nyc-kinesis-analytics-role.name
+#   policy_arn = "arn:aws:iam::aws:policy/CloudWatchFullAccessV2"
   
-}
+# }
+
+# Iam role and policies for Opensearch service
